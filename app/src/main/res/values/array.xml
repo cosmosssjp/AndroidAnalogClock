@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_array">
+        <item>項目１</item>
+        <item>項目２</item>
+        <item>項目３</item>
+        <item>項目４</item>
+    </string-array>
+</resources>

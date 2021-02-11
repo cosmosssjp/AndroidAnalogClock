@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         timerbtn = findViewById(R.id.timer);
-        spinner = findViewById(R.id.spinner);
+//        spinner = findViewById(R.id.spinner);
 
         timerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String[] items = getResources().getStringArray(R.array.my_array);
-        ArrayAdapter myAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items);
-        spinner.setAdapter(myAdapter);
+//        String[] items = getResources().getStringArray(R.array.my_array);
+//        ArrayAdapter myAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items);
+//        spinner.setAdapter(myAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -7,11 +7,7 @@
     android:layout_centerInParent="true"
     android:layout_centerHorizontal="true"
     android:layout_gravity="center|center_horizontal|center_vertical"
-    android:background="#000000"
     android:gravity="center_horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,23 +16,79 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/background">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="100dp"
+            android:text="木　48％"
+            android:textColor="@color/colorPrimary">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="140dp"
+            android:text="2月"
+            android:textColor="@color/colorPrimary">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/border"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="04"
+            android:textColor="@color/colorPrimary">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/percent"
+            android:layout_marginBottom="50dp"
+            android:text="STYLESEVEN"
+            android:textColor="@color/colorPrimary">
+        </TextView>
+
         <com.example.analogclock.CustomAnalogClock
             android:id="@+id/canvas"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:background="@drawable/spinner_background"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            app:layout_constraintStart_toStartOf="@id/canvas"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="50dp" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner"-->
+<!--            android:background="@drawable/spinner_background"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="30dp"-->
+<!--            app:layout_constraintStart_toStartOf="@id/canvas"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:layout_marginStart="50dp" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

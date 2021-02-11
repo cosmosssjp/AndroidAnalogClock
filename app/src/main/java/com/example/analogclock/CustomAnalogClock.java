@@ -7,11 +7,13 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
 
+import androidx.annotation.RequiresApi;
 
 import java.util.Calendar;
 
@@ -36,16 +38,16 @@ public class CustomAnalogClock extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onDraw(Canvas canvas) {
         if (!isInit) {
             initializeClock();
         }
-        canvas.drawColor(Color.BLACK);
+//        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(Color.TRANSPARENT);
         drawCircleBorder(canvas);
-//        drawMiliCircleBorder(canvas);
         drawClockCenter(canvas);
-//        drawMiliClockCenter(canvas);
         drawNumericHourBorder(canvas);
         drawClockHands(canvas);
         drawOuterCircleBorder(canvas);
@@ -108,21 +110,20 @@ public class CustomAnalogClock extends View {
         canvas.drawCircle((2 * mWidth) / 3, mHeight / 2  , miliRadius + mPadding - 10, mPaint);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void drawClockCenter(Canvas canvas) {
         mPaint.setStyle(Paint.Style.FILL);
         SharedClockColor();
-        canvas.drawCircle(mWidth / 2, mHeight / 2, 12, mPaint);
-    }
+        canvas.drawCircle(mWidth / 2, mHeight / 2, 20, mPaint);
 
-    private void drawMiliClockCenter(Canvas canvas) {
         mPaint.setStyle(Paint.Style.FILL);
-        SharedClockColor();
-        canvas.drawCircle((2 * mWidth) / 3, mHeight / 2, 12, mPaint);
+        mPaint.setColor(getContext().getColor(R.color.colorAccent));
+        canvas.drawCircle(mWidth / 2, mHeight / 2, 15, mPaint);
     }
 
     private void drawNumericHourBorder(Canvas canvas) {
         int fontSize = (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_SP, 14, getResources().getDisplayMetrics());
+                .applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics());
         mPaint.setTextSize(fontSize);
         SharedHandColor();
         for (int hour : mClockHours) {
@@ -142,7 +143,6 @@ public class CustomAnalogClock extends View {
         drawHandLine(canvas, (hour + calendar.get(Calendar.MINUTE) / 60) * 5f, true, false);
         drawHandLine(canvas, calendar.get(Calendar.MINUTE), false, false);
         drawHandLine(canvas, calendar.get(Calendar.SECOND), false, true);
-        drawMilliHandLine(canvas, calendar.get(Calendar.MILLISECOND) / 16.89, true);
     }
 
     private void drawHandLine(Canvas canvas, double moment, boolean isHour, boolean isSecond) {
@@ -151,19 +151,10 @@ public class CustomAnalogClock extends View {
                 isHour ? mRadius - mHandTruncation - mHourHandTruncation : mRadius - mHandTruncation;
         if (isSecond)
         SharedHandColor();
+        mPaint.setStyle(Paint.Style.STROKE);
         canvas
                 .drawLine(mWidth / 2, mHeight / 2, (float) (mWidth / 2 + Math.cos(angle) * handRadius),
                         (float) (mHeight / 2 + Math.sin(angle) * handRadius), mPaint);
-    }
-
-    private void drawMilliHandLine(Canvas canvas, double moment, boolean isMillisecond) {
-//        double angle = Math.PI * moment / 30 - Math.PI / 2;
-//        int millihandRadius = miliRadius - mMilliHandTruncation;
-//        if (isMillisecond)
-//        SharedHandColor();
-//        canvas
-//                .drawLine((2 * mWidth) / 3, mHeight / 2, (float) ((2 * mWidth) / 3 + Math.cos(angle) * millihandRadius),
-//                        (float) ((mHeight) / 2 + Math.sin(angle) * millihandRadius), mPaint);
     }
 }
 
